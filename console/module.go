@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/dop251/goja"
-	"github.com/dop251/goja_nodejs/require"
-	_ "github.com/dop251/goja_nodejs/util"
+	"github.com/kirillDanshin/goja_nodejs/require"
+	_ "github.com/kirillDanshin/goja_nodejs/util"
 )
 
 type Console struct {
@@ -37,7 +37,9 @@ func Require(runtime *goja.Runtime, module *goja.Object) {
 
 	o := module.Get("exports").(*goja.Object)
 	o.Set("log", c.log)
-
+	o.Set("error", c.log)
+	o.Set("warn", c.log)
+	o.Set("dir", c.log)
 }
 
 func Enable(runtime *goja.Runtime) {
